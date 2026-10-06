@@ -15,6 +15,15 @@ t('Sul e dividido em Joinville e Praias', () => {
   assert.equal(R.setorDaEquipe('Loja 99'), 'Loja sem setor');
 });
 
+t('varias equipes: mesmo setor vale o setor; setores misturados viram Base; Loja 30 e Arauco', () => {
+  assert.equal(R.setorDaEquipe('Loja 03, Loja 14, Zeladoria'), 'Litoral');
+  assert.equal(R.setorDaEquipe('Loja 07, Zeladoria'), 'Sul Joinville');
+  assert.equal(R.setorDaEquipe('Recursos Humanos, Loja 02, Loja 03, Loja 04, CDT'), 'Base');
+  assert.equal(R.setorDaEquipe('Loja 30'), 'Base');
+  assert.equal(R.setorDaEquipe('Arauco Construções'), 'Base');
+  assert.equal(R.setorDaEquipe('Loja 03, Loja 99'), 'Base'); // mistura de setor conhecido com loja sem setor
+});
+
 t('tipo de contrato: estagio, cooperado, CLT', () => {
   assert.equal(R.tipoContrato({ cargo: 'ESTÁGIO DE EXPEDIÇÃO, Geral', empresa: 'TINTOMAX LOJA 07' }), 'Estágio');
   assert.equal(R.tipoContrato({ cargo: 'Estagio, Estagio', empresa: 'X' }), 'Estágio');

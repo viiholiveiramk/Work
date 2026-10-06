@@ -16,29 +16,54 @@ const CONFIG = {
     'Nordeste': [4, 18, 20, 24],
     'Litoral': [3, 14, 15, 25],
   },
+  // "Loja 30" nos pedidos e a Arauco Construcoes (equipe de Expansao no Factorial), nao uma loja comercial.
+  LOJAS_ESPECIAIS: { 30: 'Base' },
   // Quem aparece nos dados mas nao conta em nenhum calculo (ex.: Fernanda do DP).
   IGNORAR_SOBRENOME: [/contabilidade dp/i],
   // Motivos de desligamento no Factorial que NAO sao saida de pessoa de verdade.
   MOTIVOS_NAO_SAIDA: ['perfil sem utilização', 'liberar sistema', 'liberar espaço colaboradores', 'teste'],
+  // Bitrix: processo "Solicitações RH" (entityTypeId 1114), funil Admissão/Promoção/Rescisão (categoryId 159).
+  BITRIX: { entityTypeId: 1114, categoryId: 159 },
+  // Quadro usado na divisao da rotatividade: 'media' (inicio e fim do mes, bateu com a apresentacao de ago/26) ou 'fim'.
+  QUADRO_REFERENCIA: 'media',
   DIAS_POR_MES: 30.44,
   FAIXAS_TEMPO_CASA: ['<3m', '3-6m', '6-12m', '1-2a', '>2a'],
   FAIXAS_IDADE: ['<18', '18-20', '20-25', '25-30', '30-40', '40+'],
 };
 
-/** "Loja 07" -> 'Sul Joinville'. Qualquer outra equipe (ou vazio) -> 'Base'. */
+/**
+ * Setor de uma equipe do Factorial ou de uma loja de um pedido.
+ *  - "Loja 07" -> 'Sul Joinville'. Equipe sem loja (Financeiro, CDT, ...) ou vazio -> 'Base'.
+ *  - A mesma pessoa pode ter varias equipes ("Loja 03, Loja 14, Zeladoria"): se todas as lojas sao do
+ *    mesmo setor, vale esse setor; se misturam setores (ex.: RH que atende todas as lojas), e Base.
+ */
 function setorDaEquipe(equipe) {
-  const m = String(equipe || '').toLowerCase().match(/loja\s*0*(\d+)/);
-  if (!m) return 'Base';
-  const n = Number(m[1]);
-  for (const setor in CONFIG.LOJAS_POR_SETOR) {
-    if (CONFIG.LOJAS_POR_SETOR[setor].indexOf(n) !== -1) return setor;
-  }
-  return 'Loja sem setor'; // loja nova: aparece em "conferir" ate ser cadastrada
+  const texto = String(equipe || '').toLowerCase();
+  const numeros = [];
+  const re = /loja\s*0*(\d+)/g;
+  let m;
+  while ((m = re.exec(texto)) !== null) numeros.push(Number(m[1]));
+  if (!numeros.length) return 'Base';
+  const setores = [];
+  let semSetor = false;
+  numeros.forEach(function (n) {
+    let achou = CONFIG.LOJAS_ESPECIAIS[n];
+    for (const setor in CONFIG.LOJAS_POR_SETOR) {
+      if (!achou && CONFIG.LOJAS_POR_SETOR[setor].indexOf(n) !== -1) achou = setor;
+    }
+    if (!achou) semSetor = true;
+    else if (setores.indexOf(achou) === -1) setores.push(achou);
+  });
+  if (!setores.length) return semSetor ? 'Loja sem setor' : 'Base'; // loja nova: vai para "conferir"
+  return setores.length === 1 && !semSetor ? setores[0] : 'Base';
 }
 
 function ehComercial(setor) {
   return setor !== 'Base' && setor !== 'Loja sem setor';
 }
+
+/** Motivos de desligamento que nao sao saida de pessoa (funcao, porque no Google `const` nao fica no objeto global). */
+function motivosNaoSaida() { return CONFIG.MOTIVOS_NAO_SAIDA; }
 
 function pessoaIgnorada(p) {
   return CONFIG.IGNORAR_SOBRENOME.some(function (re) { return re.test(String(p.sobrenome || '')); });
@@ -168,6 +193,27 @@ function contaComoPromocao(s) {
 }
 
 /**
+ * Subtipo de uma promocao a partir do que o Bitrix/Forms informa:
+ *  - promocao de quem e Estagio = Efetivacao
+ *  - texto citando cooperativa/cooperado = Passar a Cooperado (so conta se o salario mudou)
+ *  - o resto = Alteracao de nivel/funcao
+ */
+function subtipoPromocao(vinculo, textoLivre) {
+  if (/est[aá]gi/i.test(String(vinculo || ''))) return 'Efetivação';
+  if (/cooperativ|cooperad/i.test(String(textoLivre || ''))) return 'Passar a Cooperado';
+  return 'Alteração de nível';
+}
+
+/** Primeira palavra-chave do texto da demanda: 'Admissão', 'Rescisão', 'Promoção' ou null. */
+function tipoDaDemanda(texto) {
+  const t = String(texto || '').trim().toLowerCase();
+  if (t.indexOf('adm') === 0) return 'Admissão';
+  if (t.indexOf('resc') === 0 || t.indexOf('reci') === 0) return 'Rescisão';
+  if (t.indexOf('prom') === 0) return 'Promoção';
+  return null;
+}
+
+/**
  * Indicadores de movimentacao de um mes, por setor e total.
  * pessoas: lista do Factorial (para o quadro). solicitacoes: Forms/Bitrix ja filtradas (so "Bem sucedido").
  */
@@ -178,7 +224,22 @@ function movimentacaoDoMes(pessoas, solicitacoes, ano, mes) {
     if (!porSetor[setor]) porSetor[setor] = { quadro: 0, saidas: 0, entradas: 0, promocoes: 0, rotatividade: null };
     return porSetor[setor];
   }
-  quadroNoMes(pessoas, ano, mes).forEach(function (p) { linha(setorDaEquipe(p.equipe)).quadro++; });
+  const anterior = mes === 1 ? [ano - 1, 12] : [ano, mes - 1];
+  const usaMedia = CONFIG.QUADRO_REFERENCIA === 'media';
+  quadroNoMes(pessoas, ano, mes).forEach(function (p) {
+    const l = linha(setorDaEquipe(p.equipe));
+    l.quadroFim = (l.quadroFim || 0) + 1;
+  });
+  quadroNoMes(pessoas, anterior[0], anterior[1]).forEach(function (p) {
+    const l = linha(setorDaEquipe(p.equipe));
+    l.quadroInicio = (l.quadroInicio || 0) + 1;
+  });
+  Object.keys(porSetor).forEach(function (setor) {
+    const l = porSetor[setor];
+    l.quadroFim = l.quadroFim || 0;
+    l.quadroInicio = l.quadroInicio || 0;
+    l.quadro = usaMedia ? (l.quadroInicio + l.quadroFim) / 2 : l.quadroFim;
+  });
 
   solicitacoes.forEach(function (s) {
     if (!noMes(s.data, ano, mes)) return;
@@ -194,11 +255,11 @@ function movimentacaoDoMes(pessoas, solicitacoes, ano, mes) {
     if (s.tipo === 'Admissão') l.entradas++;
   });
 
-  const total = { quadro: 0, saidas: 0, entradas: 0, promocoes: 0, rotatividade: null };
+  const total = { quadro: 0, quadroFim: 0, saidas: 0, entradas: 0, promocoes: 0, rotatividade: null };
   Object.keys(porSetor).forEach(function (setor) {
     const l = porSetor[setor];
     l.rotatividade = rotatividade(l.saidas, l.entradas, l.quadro);
-    ['quadro', 'saidas', 'entradas', 'promocoes'].forEach(function (k) { total[k] += l[k]; });
+    ['quadro', 'quadroFim', 'saidas', 'entradas', 'promocoes'].forEach(function (k) { total[k] += l[k]; });
   });
   total.rotatividade = rotatividade(total.saidas, total.entradas, total.quadro);
   return { porSetor: porSetor, total: total, conferir: conferir };
@@ -206,8 +267,9 @@ function movimentacaoDoMes(pessoas, solicitacoes, ano, mes) {
 
 if (typeof module !== 'undefined') {
   module.exports = {
-    CONFIG, setorDaEquipe, ehComercial, pessoaIgnorada, tipoContrato, ehEstagio, quadroNoMes,
+    CONFIG, motivosNaoSaida, setorDaEquipe, ehComercial, pessoaIgnorada, tipoContrato, ehEstagio, quadroNoMes,
     mesesDeCasa, faixaTempoCasa, idadeEmAnos, faixaIdade, tempoDeCasa, faixaEtaria,
     rotatividade, ehMovimentoReal, contaComoPromocao, movimentacaoDoMes,
+    subtipoPromocao, tipoDaDemanda,
   };
 }
