@@ -24,4 +24,10 @@ O `.gitignore` bloqueia `.xlsx`, `.xls`, `.csv` e chaves. As chaves do Factorial
   entradas e saídas devem vir das solicitações (Forms/Bitrix), não só do Factorial.
 - Os números das apresentações não são 100% reproduzíveis só com os arquivos de hoje (o Factorial muda
   retroativamente). Por isso cada mês fechado deve ser gravado e não recalculado.
+- Decisão (ago/26): entradas e saídas vêm do Forms (até ago/26) e do Bitrix (de set/26). O Factorial
+  confirma e dá quadro, tempo de casa e idade. Rescisão sem pessoa correspondente no Factorial vai para a
+  lista "conferir" (a ligação é por nome; o Forms costuma escrever o nome mais curto, então usar nome parecido).
+- Validação com a apresentação de agosto/26: Sul 1 saída e 1 entrada (igual), Sudeste 0 saídas (igual),
+  Nordeste 8,0% (igual usando a média do quadro do início e do fim do mês) e Litoral 18,4% (apresentado 18,2%).
+  Total de saídas: Forms tem 12, a apresentação tem 11 (diferença não explicada; usar o Forms).
 - O campo "Tipo de contrato" do Factorial vem vazio. Inferido por cargo (estágio) e empresa (cooperativa).
