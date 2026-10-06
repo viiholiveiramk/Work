@@ -1,0 +1,12 @@
+# Dados reais de colaboradores NUNCA vao para o repositorio
+*.xlsx
+*.xls
+*.csv
+*.docx
+*.mp4
+*.pdf
+fixtures_reais/
+.env
+*.key
+secrets*
+node_modules/
