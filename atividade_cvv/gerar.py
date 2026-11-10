@@ -3,9 +3,16 @@ cases = [
  ("Situação 1",
   "A Bianca tem 18 anos e entrou na loja há 3 meses, como apoio. Na semana passada, numa conversa rápida, ela disse que quer crescer, mas que ainda não sabe para onde. Falou em enfermagem, em direito e, uma vez, em ser gerente. No último mês, teve 2 atestados. Esta semana, comentou com uma colega: \"não sei se vou ficar muito tempo aqui\". Quando o gestor perguntou como ela estava, respondeu: \"tô bem\"."),
  ("Situação 2",
-  "O Rafa está na loja há 2 anos e bate a meta todo mês. Há 5 meses, pediu para ser consultor e ainda não teve uma resposta. Há duas semanas, depois da mudança de escala, passou a comentar com os colegas: \"aqui não tem futuro\". No mesmo período, um colega mais novo foi promovido. O Rafa continua chegando mais cedo, mas agora sai sempre no horário. Neste mês, o total vendido por ele subiu e o ticket médio caiu. O último acompanhamento dele foi há 4 meses."),
+  "O Vinícius está na loja há 2 anos e bate a meta todo mês. Há 5 meses, pediu para ser consultor e ainda não teve uma resposta. Há duas semanas, depois da mudança de escala, passou a comentar com os colegas: \"aqui não tem futuro\". No mesmo período, um colega mais novo foi promovido. O Vinícius continua chegando mais cedo, mas agora sai sempre no horário. Neste mês, o total vendido por ele subiu e o ticket médio caiu. O último acompanhamento dele foi há 4 meses."),
  ("Situação 3",
   "A Bia era da equipe da loja e foi promovida a responsável há 2 meses. Desde então, fica até mais tarde e conferiu o estoque 3 vezes só nesta semana. Duas pessoas pediram para sair da loja nesse período, e o PZ caiu. Na reunião de ontem, alguém da equipe disse: \"ela faz tudo e não explica nada\". Quando o gestor perguntou como ela estava, respondeu: \"tá tudo bem\". Ela não teve treinamento específico para o cargo."),
+
+ ("Situação 4",
+  "O Murilo é consultor há 1 ano. Nos últimos 2 meses, as vendas dele caíram. Pelo relatório, ele atende menos pintores do que antes, e o tempo de cada atendimento aumentou. Chegou atrasado 2 vezes nas últimas semanas. Há 2 meses, a loja ganhou dois vendedores novos, e o Murilo é quem mais responde às dúvidas deles. Na última reunião, o gestor perguntou se ele precisava de alguma coisa, e ele respondeu: \"eu dou conta, pode deixar\"."),
+ ("Situação 5",
+  "A Camila é apoio no estoque da loja há 8 meses. Nunca chegou atrasada. Nas últimas 3 semanas, houve 4 divergências na conferência das entregas que passaram por ela. Costuma almoçar sozinha. Na semana passada, pediu para trocar de turno e, no dia seguinte, disse que não precisava mais. Quando o responsável perguntou o que tinha acontecido nas conferências, ela respondeu: \"foi distração minha, não vai acontecer de novo\"."),
+ ("Situação 6",
+  "O Ronaldo é multiplicador há 6 meses e lidera uma equipe de 5 pessoas. No último trimestre, a equipe dele teve a menor rotatividade do setor. Os acompanhamentos que ele registrou no Bitrix caíram de 5 por mês para 1. Ele costuma ficar na loja até o fechamento. Há duas semanas, o gestor o convidou para acompanhar a abertura de uma loja nova, e ele disse que ia pensar. Na sexta, comentou com um colega: \"tá puxado, mas é a vida\"."),
 ]
 fields = [
  ("c","CLAREZA","Entender a pessoa de verdade",
