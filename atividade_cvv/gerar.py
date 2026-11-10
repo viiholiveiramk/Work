@@ -14,12 +14,12 @@ fields = [
 def lines(n): return "".join('<div class="ln"></div>' for _ in range(n))
 pages = ""
 for tag, story in cases:
-    f = "".join(f'<div class="band"><h2>{t}<span>{s}</span></h2><p class="exp">{e}</p>{lines(3)}</div>' for _,t,s,e in fields)
+    f = "".join(f'<div class="band"><h2>{t}<span>{s}</span></h2><p class="exp">{e}</p>{lines(6)}</div>' for _,t,s,e in fields)
     pages += f"""
 <section class="page">
   <header><img src="logo.png" alt="Tintomax"><div class="ttl">CVV do Acompanhamento</div></header>
   <div class="case"><div class="tag">{tag}</div><p class="story">{story}</p></div>
-  <div class="rules">Escrevam <b>perguntas</b>, não respostas, em cada etapa do CVV. Mínimo 3 por etapa. Perguntas abertas (por que, como, quando, o que) que levem a pessoa a chegar na resposta dela. Marque com ⭐ a melhor de cada etapa.</div>
+  <div class="rules">Escrevam <b>perguntas</b>, não respostas, em cada etapa do CVV. Mínimo 4 por etapa. Perguntas abertas (por que, como, quando, o que) que levem a pessoa a chegar na resposta dela. Marque com ⭐ a melhor de cada etapa.</div>
   {f}
   <footer>Depois, usem essas perguntas no role play.</footer>
 </section>"""
