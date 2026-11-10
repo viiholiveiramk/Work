@@ -1,30 +1,11 @@
 import sys
 cases = [
- ("Situação 1", "A Bianca tem 3 meses de casa. Ela quer crescer, mas não sabe para onde. Já pensou em coisas bem diferentes, como enfermagem ou direito.",
-  ["Tem 18 anos e é apoio na loja.",
-   "Já comentou, uma vez, que \"talvez\" queira ser gerente.",
-   "Entrega tudo no prazo, mas quase não fala nas reuniões.",
-   "Teve 2 atestados no último mês.",
-   "Pega 2 ônibus para chegar na loja.",
-   "Os clientes idosos adoram atender com ela.",
-   "Disse a uma colega: \"não sei se vou ficar muito tempo aqui\".",
-   "A apresentação dela ao gestor, no fim da integração, foi remarcada 2 vezes."]),
- ("Situação 2", "O Rafa é o melhor vendedor da loja e bate a meta todo mês. Há duas semanas começou a dizer aos colegas: \"aqui não tem futuro\".",
-  ["O atendimento dele continua bom, mas ficou seco com os clientes.",
-   "Há 5 meses ele pediu para ser consultor e não teve retorno.",
-   "Um colega mais novo, que vende menos, foi promovido.",
-   "O total vendido por ele subiu, mas o ticket médio caiu.",
-   "Chega mais cedo para ajudar a loja, mas sai sempre no horário.",
-   "O último acompanhamento dele foi há 4 meses.",
-   "Começou a falar isso logo depois da mudança de escala."]),
- ("Situação 3", "A Bia foi promovida a responsável de loja há 2 meses. Fica até tarde e não delega. Quando perguntam como está, ela responde: \"tá tudo bem\".",
-  ["Antes era da própria equipe, e é amiga dos colegas.",
-   "A equipe diz que ela \"faz tudo e não explica nada\".",
-   "Já saíram 2 pessoas da loja nesses 2 meses.",
-   "O PZ da loja caiu.",
-   "Ela nunca recusa nada que o gestor pede.",
-   "Conferiu o estoque 3 vezes só esta semana.",
-   "Assumiu o cargo sem nenhum treinamento específico."]),
+ ("Situação 1",
+  "A Bianca tem 18 anos e entrou na loja há 3 meses, como apoio. Na semana passada, numa conversa rápida, ela disse que quer crescer, mas que ainda não sabe para onde. Falou em enfermagem, em direito e, uma vez, em ser gerente. No último mês, teve 2 atestados. Esta semana, comentou com uma colega: \"não sei se vou ficar muito tempo aqui\". Quando o gestor perguntou como ela estava, respondeu: \"tô bem\"."),
+ ("Situação 2",
+  "O Rafa está na loja há 2 anos e bate a meta todo mês. Há 5 meses, pediu para ser consultor e ainda não teve uma resposta. Há duas semanas, depois da mudança de escala, passou a comentar com os colegas: \"aqui não tem futuro\". No mesmo período, um colega mais novo foi promovido. O Rafa continua chegando mais cedo, mas agora sai sempre no horário. Neste mês, o total vendido por ele subiu e o ticket médio caiu. O último acompanhamento dele foi há 4 meses."),
+ ("Situação 3",
+  "A Bia era da equipe da loja e foi promovida a responsável há 2 meses. Desde então, fica até mais tarde e conferiu o estoque 3 vezes só nesta semana. Duas pessoas pediram para sair da loja nesse período, e o PZ caiu. Na reunião de ontem, alguém da equipe disse: \"ela faz tudo e não explica nada\". Quando o gestor perguntou como ela estava, respondeu: \"tá tudo bem\". Ela não teve treinamento específico para o cargo."),
 ]
 fields = [
  ("c","CLAREZA","Entender a pessoa de verdade",
@@ -36,13 +17,12 @@ fields = [
 ]
 def lines(n): return "".join('<div class="ln"></div>' for _ in range(n))
 pages = ""
-for tag, intro, fatos in cases:
-    li = "".join(f"<li>{x}</li>" for x in fatos)
+for tag, story in cases:
     f = "".join(f'<div class="band"><h2>{t}<span>{s}</span></h2><p class="exp">{e}</p>{lines(3)}</div>' for _,t,s,e in fields)
     pages += f"""
 <section class="page">
   <header><img src="logo.png" alt="Tintomax"><div class="ttl">Atividade Prática</div></header>
-  <div class="case"><div class="tag">{tag}</div><p class="intro">{intro}</p><div class="fl">O que sabemos:</div><ul>{li}</ul></div>
+  <div class="case"><div class="tag">{tag}</div><p class="story">{story}</p></div>
   <div class="rules">Escrevam <b>perguntas</b>, não respostas, em cada etapa do CVV. Mínimo 3 por etapa. Perguntas abertas (por que, como, quando, o que) que levem a pessoa a chegar na resposta dela. Marque com ⭐ a melhor de cada etapa.</div>
   {f}
   <footer>Depois, usem essas perguntas no role play.</footer>
@@ -55,10 +35,7 @@ header{{background:#EEEEEE;border-radius:8px;padding:6px 14px;display:flex;justi
 header img{{height:34px}} .ttl{{font-family:Georgia,'Times New Roman',serif;font-size:22px;color:#EC6A0B}}
 .case{{background:#fff;border:2px solid #EC6A0B;border-radius:10px;padding:10px 14px}}
 .tag{{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#EC6A0B;font-weight:bold;margin-bottom:3px}}
-.case .intro{{margin:0 0 6px;font-size:13.5px;line-height:1.4;font-weight:bold}}
-.fl{{font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:#EC6A0B;font-weight:bold;margin-bottom:2px}}
-.case ul{{margin:0;padding-left:16px;columns:2;column-gap:18px;font-size:11.5px;line-height:1.4}}
-.case li{{break-inside:avoid;margin-bottom:2px}}
+.case .story{{margin:0;font-size:14px;line-height:1.55}}
 .rules{{font-size:11px;line-height:1.4;padding:0 2px;color:#334}}
 .band{{background:#EEEEEE;border-radius:10px;padding:9px 14px;flex:1;display:flex;flex-direction:column}}
 .band h2{{margin:0;font-family:Georgia,serif;font-size:19px;font-weight:normal;color:#EC6A0B}}
