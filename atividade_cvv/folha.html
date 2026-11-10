@@ -1,51 +1,38 @@
 <!doctype html><html lang="pt-BR"><meta charset="utf-8"><style>
 @page { size:A4; margin:0 }
-*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#0D2B5E;font-size:11.5px}
-.page{width:210mm;height:297mm;padding:12mm 14mm;page-break-after:always;display:flex;flex-direction:column;gap:7px}
-header{background:#0D2B5E;color:#fff;padding:10px 14px;border-radius:6px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:900;font-size:18px;letter-spacing:1px} .ttl{font-size:13px;font-weight:bold}
-.case{background:#EEF0F3;border-left:5px solid #F47920;padding:8px 12px;border-radius:4px;font-size:12.5px}
-.case p{margin:4px 0 0;line-height:1.4}
-.rules{font-size:11px;padding:2px 2px}
-.band{background:#EEF0F3;border-radius:6px;padding:8px 12px;flex:1;display:flex;flex-direction:column}
-.band h2{margin:0 0 3px;font-size:14px;color:#F47920} .band h2 span{font-size:11px;color:#0D2B5E;font-weight:normal;margin-left:6px}
-.hint{margin:0 0 4px;font-size:10px;color:#4a5a7a}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#133A83}
+.page{width:210mm;height:297mm;padding:10mm 13mm;page-break-after:always;display:flex;flex-direction:column;gap:8px}
+header{background:#EEEEEE;border-radius:8px;padding:6px 14px;display:flex;justify-content:space-between;align-items:center}
+header img{height:34px} .ttl{font-family:Georgia,'Times New Roman',serif;font-size:22px;color:#EC6A0B}
+.case{background:#fff;border:2px solid #EC6A0B;border-radius:10px;padding:10px 14px}
+.tag{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#EC6A0B;font-weight:bold;margin-bottom:3px}
+.case p{margin:0;font-size:14px;line-height:1.45}
+.rules{font-size:11px;line-height:1.4;padding:0 2px;color:#334}
+.band{background:#EEEEEE;border-radius:10px;padding:9px 14px;flex:1;display:flex;flex-direction:column}
+.band h2{margin:0;font-family:Georgia,serif;font-size:19px;font-weight:normal;color:#EC6A0B}
+.band h2 span{font-family:Arial,sans-serif;font-size:11.5px;color:#133A83;font-style:italic;margin-left:10px}
+.exp{margin:3px 0 2px;font-size:11px;line-height:1.35;color:#133A83}
 .ln{border-bottom:1px solid #9aa5b8;flex:1;min-height:20px}
-footer{font-size:10px;color:#4a5a7a;text-align:center}
+footer{font-size:10.5px;color:#556;text-align:center}
 </style><body>
 <section class="page">
-  <header><div class="logo">TINTOMAX</div><div class="ttl">Atividade prática · Só perguntas</div></header>
-  <div class="case"><b>Caso A — Marina</b><p>A Marina é apoio nível 1, está há 8 meses na loja e já disse uma vez que quer ser consultora. Sempre foi pontual e quieta. Nas últimas semanas errou duas conferências de estoque e parou de falar no grupo da loja. O último acompanhamento dela foi há 3 meses.</p></div>
-  <div class="rules"><b>Regras:</b> só perguntas, nenhum conselho. Perguntas abertas, que não se respondem com sim ou não. Mínimo 3 por etapa. Marque com ⭐ a pergunta que mais muda a conversa.</div>
-  <div class="band c"><h2>CLAREZA <span>Entender a pessoa</span></h2>
-    <p class="hint">Como ela está hoje? O que está por trás do problema (e não só o sintoma)? O que ela espera e o que a Tintomax espera? O que ela quer da vida e por que o trabalho importa?</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
-  <div class="band v"><h2>VISÃO <span>Para onde ela pode ir</span></h2>
-    <p class="hint">Que caminhos ela tem? O que falta para chegar lá? Que fato ou dado mostra isso?</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
-  <div class="band w"><h2>VONTADE <span>O que vai acontecer</span></h2>
-    <p class="hint">O que ela vai fazer e até quando? Que apoio ela precisa? Qual é a minha parte nisso?</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
-  <footer>Gestores: pergunte ao grupo — "essa pergunta descobre algo novo ou só confirma o que você já acha?"</footer>
+  <header><img src="logo.png" alt="Tintomax"><div class="ttl">Atividade Prática</div></header>
+  <div class="case"><div class="tag">Situação 1</div><p><b>A Bianca tem 3 meses de casa.</b> Ela quer crescer, mas não sabe para onde. Já pensou em coisas bem diferentes, como enfermagem ou direito.</p></div>
+  <div class="rules">Escrevam <b>perguntas</b>, não respostas, em cada etapa do CVV. Mínimo 3 por etapa. Perguntas abertas (por que, como, quando, o que) que levem a pessoa a chegar na resposta dela. Marque com ⭐ a melhor de cada etapa.</div>
+  <div class="band"><h2>CLAREZA<span>Entender a pessoa de verdade</span></h2><p class="exp">Onde ela está agora, qual a raiz do que ela vive (não só o sintoma), o que ela espera, o que a Tintomax espera dela e o que a motiva.</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div><div class="band"><h2>VISÃO<span>Mostrar para onde podemos ir</span></h2><p class="exp">Quais caminhos ela tem, o que precisa desenvolver para chegar lá (com fato e dado) e o que pode acontecer pelo caminho.</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div><div class="band"><h2>VONTADE<span>Não desistir e apoiar</span></h2><p class="exp">O que ela vai fazer e até quando, que apoio precisa e qual é a parte dela e a minha nisso. Sem comprar a dor.</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  <footer>Depois, usem essas perguntas no role play.</footer>
 </section>
 <section class="page">
-  <header><div class="logo">TINTOMAX</div><div class="ttl">Atividade prática · Só perguntas</div></header>
-  <div class="case"><b>Caso B — Rafa</b><p>O Rafa é o melhor vendedor da loja e bate a meta todo mês. Há duas semanas começou a dizer aos colegas: "aqui não tem futuro". O atendimento dele continua bom, mas ele ficou seco com os clientes.</p></div>
-  <div class="rules"><b>Regras:</b> só perguntas, nenhum conselho. Perguntas abertas, que não se respondem com sim ou não. Mínimo 3 por etapa. Marque com ⭐ a pergunta que mais muda a conversa.</div>
-  <div class="band c"><h2>CLAREZA <span>Entender a pessoa</span></h2>
-    <p class="hint">Como ela está hoje? O que está por trás do problema (e não só o sintoma)? O que ela espera e o que a Tintomax espera? O que ela quer da vida e por que o trabalho importa?</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
-  <div class="band v"><h2>VISÃO <span>Para onde ela pode ir</span></h2>
-    <p class="hint">Que caminhos ela tem? O que falta para chegar lá? Que fato ou dado mostra isso?</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
-  <div class="band w"><h2>VONTADE <span>O que vai acontecer</span></h2>
-    <p class="hint">O que ela vai fazer e até quando? Que apoio ela precisa? Qual é a minha parte nisso?</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
-  <footer>Gestores: pergunte ao grupo — "essa pergunta descobre algo novo ou só confirma o que você já acha?"</footer>
+  <header><img src="logo.png" alt="Tintomax"><div class="ttl">Atividade Prática</div></header>
+  <div class="case"><div class="tag">Situação 2</div><p><b>O Rafa é o melhor vendedor da loja e bate a meta todo mês.</b> Há duas semanas começou a dizer aos colegas: "aqui não tem futuro". O atendimento dele continua bom, mas ele ficou seco com os clientes.</p></div>
+  <div class="rules">Escrevam <b>perguntas</b>, não respostas, em cada etapa do CVV. Mínimo 3 por etapa. Perguntas abertas (por que, como, quando, o que) que levem a pessoa a chegar na resposta dela. Marque com ⭐ a melhor de cada etapa.</div>
+  <div class="band"><h2>CLAREZA<span>Entender a pessoa de verdade</span></h2><p class="exp">Onde ela está agora, qual a raiz do que ela vive (não só o sintoma), o que ela espera, o que a Tintomax espera dela e o que a motiva.</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div><div class="band"><h2>VISÃO<span>Mostrar para onde podemos ir</span></h2><p class="exp">Quais caminhos ela tem, o que precisa desenvolver para chegar lá (com fato e dado) e o que pode acontecer pelo caminho.</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div><div class="band"><h2>VONTADE<span>Não desistir e apoiar</span></h2><p class="exp">O que ela vai fazer e até quando, que apoio precisa e qual é a parte dela e a minha nisso. Sem comprar a dor.</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  <footer>Depois, usem essas perguntas no role play.</footer>
 </section>
 <section class="page">
-  <header><div class="logo">TINTOMAX</div><div class="ttl">Atividade prática · Só perguntas</div></header>
-  <div class="case"><b>Caso C — Bia</b><p>A Bia foi promovida a responsável de loja há 2 meses, e antes era da própria equipe. Fica até tarde e não delega. A equipe reclama que ela "faz tudo e não explica nada". Quando perguntam, ela responde: "tá tudo bem".</p></div>
-  <div class="rules"><b>Regras:</b> só perguntas, nenhum conselho. Perguntas abertas, que não se respondem com sim ou não. Mínimo 3 por etapa. Marque com ⭐ a pergunta que mais muda a conversa.</div>
-  <div class="band c"><h2>CLAREZA <span>Entender a pessoa</span></h2>
-    <p class="hint">Como ela está hoje? O que está por trás do problema (e não só o sintoma)? O que ela espera e o que a Tintomax espera? O que ela quer da vida e por que o trabalho importa?</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
-  <div class="band v"><h2>VISÃO <span>Para onde ela pode ir</span></h2>
-    <p class="hint">Que caminhos ela tem? O que falta para chegar lá? Que fato ou dado mostra isso?</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
-  <div class="band w"><h2>VONTADE <span>O que vai acontecer</span></h2>
-    <p class="hint">O que ela vai fazer e até quando? Que apoio ela precisa? Qual é a minha parte nisso?</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
-  <footer>Gestores: pergunte ao grupo — "essa pergunta descobre algo novo ou só confirma o que você já acha?"</footer>
+  <header><img src="logo.png" alt="Tintomax"><div class="ttl">Atividade Prática</div></header>
+  <div class="case"><div class="tag">Situação 3</div><p><b>A Bia foi promovida a responsável de loja há 2 meses, e antes era da própria equipe.</b> Fica até tarde e não delega. A equipe reclama que ela "faz tudo e não explica nada". Quando perguntam, ela responde: "tá tudo bem".</p></div>
+  <div class="rules">Escrevam <b>perguntas</b>, não respostas, em cada etapa do CVV. Mínimo 3 por etapa. Perguntas abertas (por que, como, quando, o que) que levem a pessoa a chegar na resposta dela. Marque com ⭐ a melhor de cada etapa.</div>
+  <div class="band"><h2>CLAREZA<span>Entender a pessoa de verdade</span></h2><p class="exp">Onde ela está agora, qual a raiz do que ela vive (não só o sintoma), o que ela espera, o que a Tintomax espera dela e o que a motiva.</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div><div class="band"><h2>VISÃO<span>Mostrar para onde podemos ir</span></h2><p class="exp">Quais caminhos ela tem, o que precisa desenvolver para chegar lá (com fato e dado) e o que pode acontecer pelo caminho.</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div><div class="band"><h2>VONTADE<span>Não desistir e apoiar</span></h2><p class="exp">O que ela vai fazer e até quando, que apoio precisa e qual é a parte dela e a minha nisso. Sem comprar a dor.</p><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  <footer>Depois, usem essas perguntas no role play.</footer>
 </section></body></html>
