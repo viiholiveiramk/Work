@@ -1,0 +1,24 @@
+import sys
+rows = "".join("<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>" for _ in range(5))
+html = f"""<!doctype html><html lang="pt-BR"><meta charset="utf-8"><style>
+@page {{ size:A4 landscape; margin:0 }}
+*{{box-sizing:border-box}} body{{margin:0;font-family:Arial,Helvetica,sans-serif;color:#133A83}}
+.page{{width:297mm;height:210mm;padding:9mm 12mm;display:flex;flex-direction:column;gap:7px}}
+header{{background:#EEEEEE;border-radius:8px;padding:6px 14px;display:flex;justify-content:space-between;align-items:center}}
+header img{{height:32px}} .ttl{{font-family:Georgia,serif;font-size:22px;color:#EC6A0B}}
+.top{{display:flex;gap:16px;font-size:12px;align-items:flex-end}} .top div{{flex:1;border-bottom:1px solid #9aa5b8;padding-bottom:2px}} .top div.s{{flex:.45}}
+table{{width:100%;border-collapse:collapse;flex:1;table-layout:fixed}}
+th{{background:#133A83;color:#fff;font-size:10.5px;padding:6px 6px;text-align:left;border:1px solid #133A83;vertical-align:top}}
+th small{{display:block;font-weight:normal;font-size:8.5px;opacity:.9;margin-top:2px}}
+td{{border:1px solid #9aa5b8;height:auto}} tr:nth-child(even) td{{background:#F6F6F6}}
+footer{{font-size:9.5px;color:#556}}
+</style><body><section class="page">
+<header><img src="logo.png" alt="Tintomax"><div class="ttl">Relatório de Acompanhamento</div></header>
+<div class="top"><div>Líder: </div><div>Setor: </div><div class="s">Quinzena: </div></div>
+<table>
+<colgroup><col style="width:11%"><col style="width:9%"><col style="width:7%"><col style="width:29%"><col style="width:23%"><col style="width:21%"></colgroup>
+<thead><tr><th>Nome</th><th>Loja</th><th>Data</th><th>O que foi conversado<small>o que trabalhamos no acompanhamento</small></th><th>Missão de campo<small>o que a pessoa vai fazer nos próximos 15 dias</small></th><th>Resultado que trouxe<small>preencher no acompanhamento seguinte (15 dias depois)</small></th></tr></thead>
+<tbody>{rows}</tbody></table>
+<footer>Uma linha por acompanhamento. No acompanhamento seguinte, volte a esta linha e preencha o resultado que a pessoa trouxe.</footer>
+</section></body></html>"""
+open(sys.argv[1],"w").write(html)
