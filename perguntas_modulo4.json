@@ -1,0 +1,86 @@
+[
+  {
+    "tipo": "multipla",
+    "texto": "O que é a intenção de um acompanhamento?",
+    "alts": [
+      "O assunto principal da conversa",
+      "O que quero que tenha mudado depois dela",
+      "A meta de resultado da pessoa no mês",
+      "O que combinamos na última conversa"
+    ],
+    "certas": ["B"],
+    "explica": "Assunto é do que vou falar. Intenção é o que quero que mude depois da conversa."
+  },
+  {
+    "tipo": "multipla",
+    "texto": "Um líder diz que não prepara o acompanhamento para a conversa \"fluir naturalmente\". Segundo o módulo, o que tende a acontecer?",
+    "alts": [
+      "A pessoa se abre mais e a conversa rende",
+      "A conversa fica mais curta e objetiva",
+      "A conversa vai para onde a pessoa levar",
+      "O líder percebe melhor o que a pessoa precisa"
+    ],
+    "certas": ["C"],
+    "explica": "Sem preparação, a conversa vai para onde a pessoa levar. Exemplo: o líder entra para falar de crescimento e sai ouvindo reclamação da loja."
+  },
+  {
+    "tipo": "multipla",
+    "texto": "O líder chega sem lembrar o combinado da conversa anterior, e a pessoa é nova na loja. Segundo o módulo, o que mais pesa?",
+    "alts": [
+      "A pessoa entende que a conversa não era importante, e com quem é novo isso pesa mais",
+      "A pessoa acha o líder desorganizado",
+      "A pessoa deixa de cumprir o combinado",
+      "O líder perde tempo da conversa relembrando"
+    ],
+    "certas": ["A"],
+    "explica": "A imagem que o líder passa conta. Chegar sem lembrar o combinado passa a mensagem de que a conversa não era importante, e na integração isso pesa ainda mais."
+  },
+  {
+    "tipo": "multipla",
+    "texto": "Qual destes NÃO é tema do acompanhamento?",
+    "alts": [
+      "Clareza do papel e do que se espera da pessoa",
+      "Propósito pessoal",
+      "Problemas pessoais que estão pesando para ela",
+      "Resolver o problema pessoal por ela"
+    ],
+    "certas": ["D"],
+    "explica": "O líder pode ouvir o lado pessoal e ver como o trabalho ajuda, mas o acompanhamento não é terapia, não é comprar a dor e não é resolver pela pessoa."
+  },
+  {
+    "tipo": "multipla",
+    "texto": "O líder tem 9 pessoas e a semana está corrida. Por quem ele começa?",
+    "alts": [
+      "Pelos que estão há menos tempo na loja",
+      "Pelo que está afetando mais o cliente",
+      "Pelos que estão com pior resultado",
+      "Pelos que pedem mais atenção"
+    ],
+    "certas": ["B"],
+    "explica": "Na hora de priorizar, a pergunta é \"quem é o rei?\": o que está afetando mais o cliente."
+  },
+  {
+    "tipo": "multipla",
+    "texto": "Qual destes jeitos de acompanhar reúne proximidade, constância e foco?",
+    "alts": [
+      "Conversa longa, uma vez por semestre, sobre tudo o que a pessoa precisa melhorar",
+      "Conversas informais no corredor, quando dá, sobre vários assuntos",
+      "Conversa curta toda semana, no mesmo horário, com um objetivo definido para aquele dia",
+      "Reunião mensal com a equipe toda para falar de resultado"
+    ],
+    "certas": ["C"],
+    "explica": "Acompanhamento é proximidade e constância, com foco. Pode ser compacto, mas tem horário protegido e uma intenção definida."
+  },
+  {
+    "tipo": "multipla",
+    "texto": "Na autorreflexão sobre o Caio, qual pergunta faz o líder olhar para a própria parte?",
+    "alts": [
+      "Qual é a minha parte para o Caio chegar lá?",
+      "Por que o Caio ainda não chegou lá?",
+      "Quem pode ajudar o Caio a chegar lá?",
+      "O que o Caio precisa mudar para chegar lá?"
+    ],
+    "certas": ["A"],
+    "explica": "A pergunta do módulo é \"o que eu faço ou deixo de fazer para ele chegar lá?\". Ela tira o foco da culpa da equipe e põe o líder na conversa."
+  }
+]
